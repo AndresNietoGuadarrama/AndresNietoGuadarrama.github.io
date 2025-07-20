@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishfence: Capstone Project website</title>
+<!--
+        <div class="overview-image">
+           <img src="imgs/Phishfence.png" alt="">
+        </div>-->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="https://phishfence.streamlit.app/">Go to the app</a>
+    </div>
+</nav>
+
+
+<!-- Overview Section -->
+<header class=intro>
+   <h1>
+       DATASCI 210 Capstone Project
+    </h1>
+       <div class="logo">
+           <img src="imgs/Phishfence.png" alt="">
+        <div class="site-overview">
+
+       <div class="overview-text">
+           <p  style="text-align: justify; text-justify: inter-word;">
+                Domain Validated (DV) certificates represent 94% of the entire market due to the ease and speed with which they can be issued by the certificate authorities (CAs). Despite its popularity, CAs’ flimsy validation filters for DVs opens the door for misuse. This problem is costly: According to the <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf">2024 FBI Crime Report survey</a>, a total loss of $12.5B could be attributable to cybercrimes. Thus, the aim of this project is to provide a data-driven, automated tool that aids CAs validation teams on detecting potentially malicious domains before the DV certificate is issued. 
+           </p>
+       </div>
+       <div class="overview-image">
+           <img src="imgs/malicious_website.png" alt="">
+       </div>
+
+</header>
+    <h2 style="text-align: center;">
+        Meet the team:
+    </h2>
+    <!-- Scrolling Team Profiles -->
+    <section id="team-section">
+        <div class="team-member step" id="member1">
+            <img src="imgs/person_icon.JPG" alt="Clifton Harris">
+            <h2 style="text-align: center;">Clifton Harris</h2>
+            <p> Description for Clifton
+            </p>
+        </div>
+        <div class="team-member step" id="member2">
+            <img src="imgs/person_icon.JPG" alt="Kyle Wong">
+            <h2 style="text-align: center;">Kyle Wong</h2>
+            <p> Description for Kyle
+            </p>
+        </div>
+        <div class="team-member step" id="member3">
+            <img src="imgs/person_icon.JPG" alt="Andres Nieto">
+            <h2 style="text-align: center;">Andres Nieto</h2>
+            <p> Description for Andres
+            </p>
+        </div>
+    </section>
+
+    <!-- Scrollama Script -->
+    <script src="scripts.js"></script>
+        <!-- Button functions: 
+    <script type="text/javascript">
+    document.getElementById("andres").onclick = function () {
+        location.href = "demography_viz.html";
+    };
+    </script>
+    <script type="text/javascript">
+    document.getElementById("jason").onclick = function () {
+        location.href = "caloric_gdp_map.html";
+    };
+    </script>
+    <script type="text/javascript">
+    document.getElementById("mike").onclick = function () {
+        location.href = "DataVizIndexProject.html";
+    };
+    </script>
+    <script type="text/javascript">
+    document.getElementById("mauricio").onclick = function () {
+        location.href = "diet_fads.html";
+    };
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+</body>
+</html>
