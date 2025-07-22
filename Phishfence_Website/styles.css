@@ -122,10 +122,17 @@ nav {
     font-size: 1em;
     font-weight: bold;
 }
+
 .team-card p {
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin-top: 5px;
-    font-weight: bold;
+    text-decoration: none;
+    text-anchor: none;
+}
+.team-card a {
+    font-size: 0.9em;
+    color: #1c5d77;
+    text-decoration: none;
 }
 
 /* Scrolling Team Section */
@@ -198,8 +205,7 @@ nav {
 .diet-list a {
     font-size: 1.2em;
     color: #1c5d77;
-    text-decoration: underline;
-    cursor: pointer;
+    text-decoration: none;
 }
 
 .diet-list a:hover {
@@ -246,7 +252,6 @@ tableau-viz {
   #diet-foods li {
     margin-bottom: 4px;
   }
-  
 
   
   

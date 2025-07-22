@@ -18,21 +18,56 @@
 <nav>
     <div class="nav-container">
         <a href="index.html">Home</a>
-        <a href="https://phishfence.streamlit.app/">Go to the app</a>
+        <a href="https://phishfence.streamlit.app/">Go to the app</a>   
+        <div class="dropdown">
+            <button class="dropbtn">Sections</button>
+            <div class="dropdown-content" id="dropdown-menu">
+                <a href="#problem_title">Problem Statement</a>
+                <a href="#goal_title">Goal</a>
+                <a href="#data_title">The Data</a>
+                <a href="#model_title">The Model</a>
+                <a href="#examples_title">Examples</a>
+        </div>
     </div>
 </nav>
 
-
 <!-- Overview Section -->
 <header class=intro>
-   <h1>
-       DATASCI 210 Capstone Project
-    </h1>
-       <div class="logo">
+    <div class="logo">
            <img src="imgs/Phishfence.png" alt="">
-        <div class="site-overview">
-
+    </div>
+    <h1 style="padding: 10px;">
+        Mission
+    </h1>
+    <p style="font-style: italic; font-size: 25px;"> 
+    "Empowering Certificate Authorities to protect internet trust by proactively flagging suspicious domain requests before they become threats."
+    </p>
+    <h1 style="padding: 10px;">
+        Meet The Team
+    </h1>
+        <!-- Team Grid -->
+        <div class="team-grid">
+            <span class="team-card">
+                <img src="imgs/k.png" alt="">
+                <h3>Kyle Wong</h3>
+                <p>Data Engeneer</p>
+            </span>
+            <span class="team-card">
+                <img src="imgs/c.png" alt="">
+                <h3>Clifton Harris</h3>
+                    <p style="text-align:center">  
+                    Data Scientist </br>Project Manager 
+                    </p>
+            </span>
+            <span class="team-card">
+                <img src="imgs/a.png" alt="">
+                <h3>Andres Nieto</h3>
+                <p>Data Scientist</p>
+            </span>
+        </div>
+    <div class="site-overview"> 
        <div class="overview-text">
+        <h2  id="problem_title">Problem Statement</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
                 Domain Validated (DV) certificates represent 94% of the entire market due to the ease and speed with which they can be issued by the certificate authorities (CAs). Despite its popularity, CAs’ flimsy validation filters for DVs opens the door for misuse. This problem is costly: According to the <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf">2024 FBI Crime Report survey</a>, a total loss of $12.5B could be attributable to cybercrimes. Thus, the aim of this project is to provide a data-driven, automated tool that aids CAs validation teams on detecting potentially malicious domains before the DV certificate is issued. 
            </p>
@@ -40,32 +75,31 @@
        <div class="overview-image">
            <img src="imgs/malicious_website.png" alt="">
        </div>
-
+    </div>
+    <a href="https://phishfence.streamlit.app/" class="btn btn-primary btn-lg btn-block" role="button">Go to the app</a>
 </header>
-    <h2 style="text-align: center;">
-        Meet the team:
-    </h2>
-    <!-- Scrolling Team Profiles -->
+
+    <!-- Scrolling Team Profiles
     <section id="team-section">
         <div class="team-member step" id="member1">
-            <img src="imgs/person_icon.jpg" alt="Clifton Harris">
+            <img src="imgs/c.JPG" alt="Clifton Harris">
             <h2 style="text-align: center;">Clifton Harris</h2>
             <p> Description for Clifton
             </p>
         </div>
         <div class="team-member step" id="member2">
-            <img src="imgs/person_icon.jpg" alt="Kyle Wong">
+            <img src="imgs/person_icon.JPG" alt="Kyle Wong">
             <h2 style="text-align: center;">Kyle Wong</h2>
             <p> Description for Kyle
             </p>
         </div>
         <div class="team-member step" id="member3">
-            <img src="imgs/person_icon.jpg" alt="Andres Nieto">
+            <img src="imgs/person_icon.JPG" alt="Andres Nieto">
             <h2 style="text-align: center;">Andres Nieto</h2>
             <p> Description for Andres
             </p>
         </div>
-    </section>
+    </section>-->
 
     <!-- Scrollama Script -->
     <script src="scripts.js"></script>
@@ -90,6 +124,7 @@
         location.href = "diet_fads.html";
     };
     </script> -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
 </body>
