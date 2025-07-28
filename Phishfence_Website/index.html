@@ -8,7 +8,7 @@
         <div class="overview-image">
            <img src="imgs/Phishfence.png" alt="">
         </div>-->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
@@ -24,17 +24,18 @@
             <div class="dropdown-content" id="dropdown-menu">
                 <a href="#problem_title">Problem Statement</a>
                 <a href="#goal_title">Goal</a>
-                <a href="#data_title">The Data</a>
+                <a href="#mvp_title">Product</a>
+                <a href="#data_title">Data Sources</a>
                 <a href="#model_title">The Model</a>
-                <a href="#examples_title">Examples</a>
+                <a href="#examples_title">How does the model work?</a>
         </div>
     </div>
 </nav>
 
 <!-- Overview Section -->
 <header class=intro>
-    <div class="logo">
-           <img src="imgs/Phishfence.png" alt="">
+    <div class="overview-image">
+           <img src="imgs/Phishfence.png" alt="logo">
     </div>
     <h1 style="padding: 10px;">
         Mission
@@ -65,18 +66,81 @@
                 <p>Data Scientist</p>
             </span>
         </div>
-    <div class="site-overview"> 
+<!--Problem Statement-->
+    <div class="site-overview" id="problem_title">  
        <div class="overview-text">
-        <h2  id="problem_title">Problem Statement</h2>
+        <h2>Problem Statement</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-                Domain Validated (DV) certificates represent 94% of the entire market due to the ease and speed with which they can be issued by the certificate authorities (CAs). Despite its popularity, CAs’ flimsy validation filters for DVs opens the door for misuse. This problem is costly: According to the <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf">2024 FBI Crime Report survey</a>, a total loss of $12.5B could be attributable to cybercrimes. Thus, the aim of this project is to provide a data-driven, automated tool that aids CAs validation teams on detecting potentially malicious domains before the DV certificate is issued. 
-           </p>
+                Domain Validated (DV) certificates represent 94% of the entire market due to the ease and speed with which they can be issued by the certificate authorities (CAs). Despite its popularity, CAs’ flimsy validation filters for DVs opens the door for misuse. This problem is costly: According to the <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf">2024 FBI Crime Report survey</a>, a total loss of $12.5B could be attributable to cybercrimes.
        </div>
        <div class="overview-image">
            <img src="imgs/malicious_website.png" alt="">
        </div>
     </div>
-    <a href="https://phishfence.streamlit.app/" class="btn btn-primary btn-lg btn-block" role="button">Go to the app</a>
+<!--Goal-->
+    <div class="site-overview" id="goal_title"> 
+       <div class="overview-text">
+        <h2>Goal</h2>
+           <p  style="text-align: justify; text-justify: inter-word;">
+            The aim of this project is to provide a data-driven, automated tool that aids CAs validation teams on detecting potentially malicious domains before the DV certificate is issued, adding an extra validation layer to the issuance pipeline. 
+           </p>
+       </div>
+    </div>
+<!--MVP-->
+    <div class="site-overview" id="mvp_title"> 
+       <div class="overview-text">
+        <h2>Our Product</h2>
+           <p  style="text-align: justify; text-justify: inter-word;">
+                Our application rests over a classification model on the backend that outputs the risk of live DV domains being malicious measured as a score from 0 to 1 in which the higher the score, the higher the risk will be for the DV domain to be malicious. Other attributes that make our product attractive for the intended target users (CA’s validation teams) are:
+                <ol>
+                    <li>Scalability, understood as the ability to process large files of batched requests, as well as live queries of DV domains.</li>
+                    <li>Easy to embed with the design of the CAs environment without disrupting or creating bottlenecks on the DV issuance process.</li>
+                </ol>
+                The model and feature extraction are deployed on AWS Lambda instances using S3 buckets optimized for high throughputs.
+           </p>
+       </div>
+    </div>
+<!--Data-->
+    <div class="site-overview" id="data_title"> 
+       <div class="overview-text">
+        <h2>Data Sources</h2>
+           <p  style="text-align: justify; text-justify: inter-word;">
+              Data used to build the model came from the Certificate Transparency Logs (CT-Logs), which are open to general public and contain the full domain name and information regarding their associated certificates such as the CA who issued them, the validation period, etc. Whitelists and blacklists of domains form several sources such as <b> PhishTank </b>were used for labeling and relevant features from the domains and their certificates (CA who issues it, suspicious top level domain, number of special characters such as as dots or hypens, etc.) were extracted to build the inputs for the model. To mitigate biased results, a randomly sampled balanced dataset from beningn and malicious domains were constructed for training.
+           </p>
+       </div>
+    </div>
+<!--Model-->
+    <div class="site-overview" id="model_title"> 
+       <div class="overview-text">
+        <h2>The Model</h2>
+           <p  style="text-align: justify; text-justify: inter-word;">
+                Although Support Vector Machines (SVM) yielded the highest accuracy on the training set, they were overfitted. After testing different classifiers, we selected the one with the highest accuracy on test set and the highest AUC: A Random Forest classifier with an accuracy of <b>88%</b> on the test set.
+           </p>
+       </div>
+    </div>
+<!--Examples-->
+    <div class="site-overview" id="examples_title"> 
+       <div class="overview-text">
+        <h2>How does the model work?</h2>
+          <div class="container-img">
+            <figure>
+              <div class="title-img">Bening domain</div>
+              <img src="imgs/bening_example.png" alt="Example of bening domain">
+              <figcaption>Bening domains have a low risk score. Ex: 14%</figcaption>
+            </figure>
+
+            <figure>
+              <div class="title-img">Suspicious domain</div>
+              <img src="imgs/malicious_example.png" alt="Example of malicious domain">
+              <figcaption>... Whereas suspcious domains show higher scores. Ex: 86%</figcaption>
+            </figure>
+          </div>
+        </div>
+    </div>
+
+
+<a href="https://phishfence.streamlit.app/" class="btn btn-primary btn-lg btn-block" role="button">Go to the app</a>
+
 </header>
 
     <!-- Scrolling Team Profiles
