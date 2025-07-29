@@ -22,12 +22,12 @@
         <div class="dropdown">
             <button class="dropbtn">Sections</button>
             <div class="dropdown-content" id="dropdown-menu">
-                <a href="#problem_statement">Problem Statement</a>
-                <a href="#goal">Goal</a>
-                <a href="#product">Product</a>
-                <a href="#data_sources">Data Sources</a>
-                <a href="#model">The Model</a>
-                <a href="#example_queries">How does the model work?</a>
+                <a href="#problem_title">Problem Statement</a>
+                <a href="#goal_title">Goal</a>
+                <a href="#mvp_title">Product</a>
+                <a href="#data_title">Data Sources</a>
+                <a href="#model_title">The Model</a>
+                <a href="#examples_title">How does the model work?</a>
         </div>
     </div>
 </nav>
@@ -40,9 +40,15 @@
     <h1 style="padding: 10px;">
         Mission
     </h1>
-    <p style="font-style: italic; font-size: 20px;"> 
-    "Empowering Certificate Authorities to protect internet trust by proactively flagging suspicious domain requests before they become threats."
+    <p style="font-weight: bold; font-style: italic; font-size: 20px;"> 
+    Empowering Certificate Authorities to protect internet trust by proactively flagging suspicious domain requests before they become threats.
     </p>
+    <blockquote class="cita">
+      <p style="font-size: 20px;">
+      "It's valuable that the product outputs immediate validation, automates the rejection process, is interpretable and flexible to integrate with existing systems."
+      </p>
+      <footer style="text-align: right; font-size: 12px">— Nigel, SECTIGO Validation Team</footer>
+    </blockquote>
     <h1 style="padding: 10px;">
         Meet The Team
     </h1>
@@ -67,7 +73,7 @@
             </span>
         </div>
 <!--Problem Statement-->
-    <div class="site-overview" id="problem_statement">  
+    <div class="site-overview" id="problem_title">  
        <div class="overview-text">
         <h2>Problem Statement</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
@@ -78,7 +84,7 @@
        </div>
     </div>
 <!--Goal-->
-    <div class="site-overview" id="goal"> 
+    <div class="site-overview" id="goal_title"> 
        <div class="overview-text">
         <h2>Goal</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
@@ -87,7 +93,7 @@
        </div>
     </div>
 <!--MVP-->
-    <div class="site-overview" id="product"> 
+    <div class="site-overview" id="mvp_title"> 
        <div class="overview-text">
         <h2>Our Product</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
@@ -101,16 +107,16 @@
        </div>
     </div>
 <!--Data-->
-    <div class="site-overview" id="data_sources"> 
+    <div class="site-overview" id="data_title"> 
        <div class="overview-text">
         <h2>Data Sources</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-              Data used to build the model came from the Certificate Transparency Logs (CT-Logs), which are open to general public and contain the full domain name and information regarding their associated certificates such as the CA who issued them, the validation period, etc. Whitelists and blacklists of domains form several sources such as <b> PhishTank </b> and <b> URLAbuse </b> were used for labeling and relevant features from the domains and their certificates (CA who issues it, suspicious top level domain, number of special characters such as as dots or hypens, etc.) were extracted to build the inputs for the model. To mitigate biased results, a randomly sampled balanced dataset from beningn and malicious domains were constructed for training.
+              Data used to build the model came from the Certificate Transparency Logs (CT-Logs), which are open to general public and contain the full domain name and information regarding their associated certificates such as the CA who issued them, the validation period, etc. Whitelists and blacklists of domains form several sources such as <b> PhishTank </b>were used for labeling and relevant features from the domains and their certificates (CA who issues it, suspicious top level domain, number of special characters such as as dots or hypens, etc.) were extracted to build the inputs for the model. To mitigate biased results, a randomly sampled balanced dataset from beningn and malicious domains were constructed for training.
            </p>
        </div>
     </div>
 <!--Model-->
-    <div class="site-overview" id="model"> 
+    <div class="site-overview" id="model_title"> 
        <div class="overview-text">
         <h2>The Model</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
@@ -119,7 +125,7 @@
        </div>
     </div>
 <!--Examples-->
-    <div class="site-overview" id="example_queries"> 
+    <div class="site-overview" id="examples_title"> 
        <div class="overview-text">
         <h2>How does the model work?</h2>
           <div class="container-img">
