@@ -47,7 +47,7 @@
       <p style="font-size: 20px;">
       "It's valuable that the product outputs immediate validation, automates the rejection process, is interpretable and flexible to integrate with existing systems."
       </p>
-      <footer style="text-align: right; font-size: 12px">— SECTIGO Validation Team</footer>
+      <footer style="text-align: right; font-size: 12px">— Nigel, SECTIGO Validation Team</footer>
     </blockquote>
     <h1 style="padding: 10px;">
         Meet The Team
@@ -77,10 +77,16 @@
        <div class="overview-text">
         <h2>Problem Statement</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-                Domain Validated (DV) certificates represent 94% of the entire market due to the ease and speed with which they can be issued by the certificate authorities (CAs). Despite its popularity, CAs’ flimsy validation filters for DVs opens the door for misuse. This problem is costly: According to the <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf">2024 FBI Crime Report survey</a>, a total loss of $12.5B could be attributable to cybercrimes.
+                Internet certificates are crucial to protect the connection between clients (the browser on your local computer) and servers (the website you are accessing). Without them, secure protocols to encrypt information through internet networks won't be possible. 
+            </br>
+            </br>
+                Certificates can be classified by the number of validation layers that Certificate Authorities (CAs) implement for their issuance. Of them, <b>Domain Validated</b> (DV) certificates represent 94% of the entire market due to the ease and speed with which they can be issued. Despite its popularity, CAs flimsy validation filters for DVs open the door for misuse. This problem is costly: According to the <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf">2024 FBI Crime Report survey</a>, a total loss of $11.3B could be attributable to malicious domains.
        </div>
        <div class="overview-image">
-           <img src="imgs/malicious_website.png" alt="">
+        <figure>
+           <img src="imgs/overview.png" alt="">
+           <figcaption>IA generated with ChatGPT4</figcaption>
+        </figure>
        </div>
     </div>
 <!--Goal-->
@@ -88,7 +94,7 @@
        <div class="overview-text">
         <h2>Goal</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-            The aim of this project is to provide a data-driven, automated tool that aids CAs validation teams on detecting potentially malicious domains before the DV certificate is issued, adding an extra validation layer to the issuance pipeline. 
+            The aim of this project is to provide a data-driven, automated tool that aids CAs validation teams (our target users) on detecting potentially malicious domains before the DV certificate is issued, adding an extra validation layer to the issuance pipeline. 
            </p>
        </div>
     </div>
@@ -97,7 +103,7 @@
        <div class="overview-text">
         <h2>Our Product</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-                Our application rests over a classification model on the backend that outputs the risk of live DV domains being malicious measured as a score from 0 to 1 in which the higher the score, the higher the risk will be for the DV domain to be malicious. Other attributes that make our product attractive for the intended target users (CA’s validation teams) are:
+                Based on our target user's feedback, the minimum viable product we envision rests over a classification model on the backend that outputs the risk of live DV domains being malicious measured as a score from 0 to 1 in which the higher the score, the higher the risk will be for the DV domain to be malicious. Other attributes that make our product attractive for our target users are:
                 <ol>
                     <li>Scalability, understood as the ability to process large files of batched requests, as well as live queries of DV domains.</li>
                     <li>Easy to embed with the design of the CAs environment without disrupting or creating bottlenecks on the DV issuance process.</li>
@@ -111,8 +117,14 @@
        <div class="overview-text">
         <h2>Data Sources</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-              Data used to build the model came from the Certificate Transparency Logs (CT-Logs), which are open to general public and contain the full domain name and information regarding their associated certificates such as the CA who issued them, the validation period, etc. Whitelists and blacklists of domains form several sources such as <b> PhishTank </b>were used for labeling and relevant features from the domains and their certificates (CA who issues it, suspicious top level domain, number of special characters such as as dots or hypens, etc.) were extracted to build the inputs for the model. To mitigate biased results, a randomly sampled balanced dataset from beningn and malicious domains were constructed for training.
+              Data used to build the model came from the Certificate Transparency Logs (CT-Logs), which are open to general public and contain the full domain name and information regarding their associated certificates such as the CA who issued them, the validation period, etc. Whitelists of domains with associated Extended and Organization Validation certificates, and blacklists of domains form several sources such as <b> PhishTank </b> and <b> URLAbuse </b>were used for labeling using an exact matching criteria to minimize the presence of false positives, and relevant features from the domains and their certificates (CA who issues it, suspicious top level domain, number of special characters such as dots or hyphens, etc.) were extracted to build the inputs for the model. To mitigate biased results, a randomly sampled balanced dataset from 2039 benign and 2039 malicious domain names was built for training.
            </p>
+       </div>
+       <div class="overview-image">
+        <figure>
+           <img src="imgs/eda.png" alt="">
+           <figcaption>Exploration of relevan features</figcaption>
+        </figure>
        </div>
     </div>
 <!--Model-->
@@ -120,27 +132,44 @@
        <div class="overview-text">
         <h2>The Model</h2>
            <p  style="text-align: justify; text-justify: inter-word;">
-                Although Support Vector Machines (SVM) yielded the highest accuracy on the training set, they were overfitted. After testing different classifiers, we selected the one with the highest accuracy on test set and the highest AUC: A Random Forest classifier with an accuracy of <b>88%</b> on the test set.
+                Several supervised learning algorithms were considered to select the most appropriate model for our product: Gradient Boosting, Random Forest, Support Vector Machines and several Neural Network architectures among others were considered. Our selection criterion was mainly focused on:
+                <ol>
+                    <li>Maximizing the Area Under the Curve (AUC) between true and false positives as in a real world scenario the data will be heavily unbalanced.</li>
+                    <li>The features that the model takes as input for classification are easy to interpretate (a.k.a., the model is not a "black box").</li>
+                    <li>Maximizing the accuracy on the test set.</li>
+                </ol>
            </p>
-       </div>
+           <p  style="text-align: justify; text-justify: inter-word;">
+                With these specifications in mind, we selected the model with the highest accuracy on test set (<b>87%</b>) and the highest AUC (<b>95%</b>): A Random Forest classifier that outputs the predicted probability of being a malicious website. Interpretation uses the <b>Shapley Value</b>, which measures the marginal contribution of each feature to the model's predicted probability outcome. In the plot below it can be observed that the Jaro-Winkler similarity to the domain list with EV and OV certificates is the most influential feature:
+           </p>
+        </div>
+        <div class="container-img">
+             <figure>
+               <img src="imgs/shapley.png" alt="Example of bening domain">
+               <figcaption>Shapley values for the top 15 most influential features </figcaption>
+             </figure>
+        </div>
     </div>
 <!--Examples-->
-    <div class="site-overview" id="examples_title"> 
+    <div class="site-overview" id="examples_title">
        <div class="overview-text">
         <h2>How does the model work?</h2>
-          <div class="container-img">
-            <figure>
-              <div class="title-img">Bening domain</div>
-              <img src="imgs/bening_example.png" alt="Example of bening domain">
-              <figcaption>Bening domains have a low risk score. Ex: 14%</figcaption>
-            </figure>
+            <p  style="text-align: justify; text-justify: inter-word;">
+                To visualize how the model outputs the risk score, consider two domains: "wellsfargo.com" (benign) and "awfwellsfargo.com" (malicious). Suspicious domains will score a low Jaro-Winkler similarity, leading to a higher risk probability. On the other hand, benign domains without unusual tokens and with certificates with long validity period are associated with lower risk.  
+            </p>
+              <div class="container-img">
+                <figure>
+                  <div class="title-img">Benign domain</div>
+                  <img src="imgs/bening_example.png" alt="Example of bening domain">
+                  <figcaption>benign domains have a low risk score. Ex: 14%</figcaption>
+                </figure>
 
-            <figure>
-              <div class="title-img">Suspicious domain</div>
-              <img src="imgs/malicious_example.png" alt="Example of malicious domain">
-              <figcaption>... Whereas suspcious domains show higher scores. Ex: 86%</figcaption>
-            </figure>
-          </div>
+                <figure>
+                  <div class="title-img">Suspicious domain</div>
+                  <img src="imgs/malicious_example.png" alt="Example of malicious domain">
+                  <figcaption>... Whereas suspcious domains show higher scores. Ex: 86%</figcaption>
+                </figure>
+              </div>
         </div>
     </div>
 
